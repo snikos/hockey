@@ -4,10 +4,11 @@ let nhl = {
   Gordie: [],
   WayneGretzky: [],
   MarioLemieux(getUrl, data){
-    let proxyUrl  = 'https://cors-anywhere.herokuapp.com/';
+    //let proxyUrl  = 'https://cors-anywhere.herokuapp.com/';
     let targetUrl = getUrl;
     let that;
-    fetch(proxyUrl + getUrl)
+    //fetch(proxyUrl + getUrl)
+    fetch(getUrl)
     .then(response => response.json())
     .then(arr => nhl[data] = arr);
   },
