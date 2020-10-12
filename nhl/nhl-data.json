@@ -1,0 +1,130 @@
+[{
+	"ANA": {
+		"team": "Anaheim_Ducks",
+		"url_num": 1736
+	},
+	"ARI": {
+		"team": "Arizona_Coyotes",
+		"url_num": 5263
+	},
+	"BOS": {
+		"team": "Boston_Bruins",
+		"url_num": 3
+	},
+	"BUF": {
+		"team": "Buffalo_Sabres",
+		"url_num": 4
+	},
+	"CAL": {
+		"team": "Calgary_Flames",
+		"url_num": 5
+	},
+	"CAR": {
+		"team": "Carolina_Hurricanes",
+		"url_num": 6
+	},
+	"CHI": {
+		"team": "Chicago_Blackhawks",
+		"url_num": 7
+	},
+	"COL": {
+		"team": "Colorado_Avalanche",
+		"url_num": 8
+	},
+	"CBJ": {
+		"team": "Columbus_Blue_Jackets",
+		"url_num": 9
+	},
+	"DAL": {
+		"team": "Dallas_Stars",
+		"url_num": 10
+	},
+	"DET": {
+		"team": "Detroit_Red_Wings",
+		"url_num": 11
+	},
+	"EDM": {
+		"team": "Edmonton_Oilers",
+		"url_num": 12
+	},
+	"FLO": {
+		"team": "Florida_Panthers",
+		"url_num": 13
+	},
+	"LOS": {
+		"team": "Los_Angeles_Kings",
+		"url_num": 14
+	},
+	"MIN": {
+		"team": "Minnesota_Wild",
+		"url_num": 15
+	},
+	"MON": {
+		"team": "Montreal_Canadiens",
+		"url_num": 16
+	},
+	"NAS": {
+		"team": "Nashville_Predators",
+		"url_num": 17
+	},
+	"NJD": {
+		"team": "New_Jersey_Devils",
+		"url_num": 18
+	},
+	"NYI": {
+		"team": "New_York_Islanders",
+		"url_num": 19
+	},
+	"NYR": {
+		"team": "New_York_Rangers",
+		"url_num": 20
+	},
+	"OTT": {
+		"team": "Ottawa_Senators",
+		"url_num": 21
+	},
+	"PHI": {
+		"team": "Philadelphia_Flyers",
+		"url_num": 22
+	},
+	"PIT": {
+		"team": "Pittsburgh_Penguins",
+		"url_num": 24
+	},
+	"SJS": {
+		"team": "San_Jose_Sharks",
+		"url_num": 26
+	},
+	"KRA": {
+		"team": "Seattle_Kraken",
+		"url_num": 6740
+	},
+	"SLB": {
+		"team": "St_Louis_Blues",
+		"url_num": 25
+	},
+	"TBL": {
+		"team": "Tampa_Bay_Lightning",
+		"url_num": 27
+	},
+	"TML": {
+		"team": "Toronto_Maple_Leafs",
+		"url_num": 28
+	},
+	"VAN": {
+		"team": "Vancouver_Canucks",
+		"url_num": 29
+	},
+	"VGK": {
+		"team": "Vegas_Golden_Knights",
+		"url_num": 6114
+	},
+	"WSH": {
+		"team": "Washington_Capitals",
+		"url_num": 30
+	},
+	"WIN": {
+		"team": "Winnipeg_Jets",
+		"url_num":3050
+	}
+}]
