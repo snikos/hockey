@@ -1,26 +1,53 @@
 <!DOCTYPE html>
-<!--[if IE 6]><html version="HTML+RDFa 1.1" id="ie6" lang="en-US"><![endif]-->
-<!--[if IE 7]><html version="HTML+RDFa 1.1" id="ie7" lang="en-US"><![endif]-->
-<!--[if IE 8]><html version="HTML+RDFa 1.1" id="ie8" lang="en-US"><![endif]-->
-<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!--><html version="HTML+RDFa 1.1" lang="en-US"><!--<![endif]-->
 <head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <meta name="HandheldFriendly" content="true" /><!-- MOBILE - ANDROID -->
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
-    
-    <meta name="description" content="ui elements"/>
-    <meta name="keywords" content="buttons">
-    <meta name="author" content="css">
-    <meta name="robots" content="NOINDEX, NOFOLLOW">
-
-    <title>generator</title>
-
-	<link rel="stylesheet" href="css/ui-elems.css" media="all" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
+  <title>NHL - The cup of Stanley</title>
+  <link rel="stylesheet" type="text/css" href="nhl/style/style.css" />
 </head>
 <body>
-    <div>Front!</div>
+	<div class="cup_box_fm">
+		<section class="pitch-box">
+		 <span class="tb tb-left">
+		 	<span class="tb-team"></span>
+		 </span>
+		 <div class="pitch">
+		  <span class="before"></span>
+		  <span class="kr"></span>
+		  <span class="line"></span>
+		  <span class="goal-line goal-line_left"></span>
+		  <span class="goal-line goal-line_right"></span>
+		  <span class="center-dot"></span>
+		  <span class="after"></span>
+		  <span class="fortest"></span>
+		 </div>
+		 <span class="tb tb-right">
+		 	<span class="tb-team"></span>
+		 </span>
+		</section>
+		<h1 id="nhl_cos_date">Cup of Stanley <span id="nhl_cos">1893</span></h1>
+		<section id="chomp_fm" class="">
+			<div id="left_round1" class="western"></div>
+			<div id="left_round2" class="western"></div>
+			<div id="left_round3" class="western chomp"></div>
+			<div id="cup_final_pitch"><div id="cup_final"></div></div>
+			<div id="right_round3" class="eastern chomp"></div>
+			<div id="right_round2" class="eastern"></div>
+			<div id="right_round1" class="eastern"></div>
+		</section>
+		<section id="scores_block">
+			<div class="final_teams">
+				<span id="ab_team_top">-</span>
+				<span id="final_score">:</span>
+				<span id="ab_team_bot" class="champony">-</span>
+			</div>
+			<ul id="d_series"></ul>
+		</section>
+	</div>
+	<ul id="cup_season"><li data-cup="sn2019-2020" class="activo"><span data-jseason="0">2019-2020</span></li><li data-cup="sn2018-2019"><span data-jseason="1">2018-2019</span></li><li data-cup="sn2017-2018"><span data-jseason="2">2018-2019</span></li><li data-cup="sn2016-2017"><span data-jseason="3">2016-2017</span></li><li data-cup="sn2015-2016"><span data-jseason="4">2015-2016</span></li></ul>
+	<button id="showPathWinner">showPathWinner</button>
+
+<script src="nhl/app-json.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
