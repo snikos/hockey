@@ -365,8 +365,8 @@ window.addEventListener('load', function(){
     document.querySelectorAll('.pitch-box')[0].classList.remove('start');
   }, 3000);
 
-  nhl.MarioLemieux('nhl-data.json', 'Gordie');
-  nhl.MarioLemieux('sn-all.json', 'WayneGretzky');
+  nhl.MarioLemieux('nhl/nhl-data.json', 'Gordie');
+  nhl.MarioLemieux('nhl/sn-all.json', 'WayneGretzky');
   let son = 0;
   let g = nhl.Gordie[0];
   let o = nhl.WayneGretzky[son];
@@ -375,8 +375,8 @@ window.addEventListener('load', function(){
     nhl.init( g, o );
   } else {
     setTimeout( () => {
-      nhl.MarioLemieux('nhl-data.json', 'Gordie');
-      nhl.MarioLemieux('sn-all.json', 'WayneGretzky');
+      nhl.MarioLemieux('nhl/nhl-data.json', 'Gordie');
+      nhl.MarioLemieux('nhl/sn-all.json', 'WayneGretzky');
       g = nhl.Gordie[0];
       o = nhl.WayneGretzky[son];
       nhl.init( g, o );
