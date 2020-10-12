@@ -365,7 +365,7 @@ window.addEventListener('load', function(){
   }, 3000);
 
   nhl.MarioLemieux('nhl-data.json', 'Gordie');
-  nhl.MarioLemieux('http://comb.atwebpages.com/nhl/sn-all.json', 'WayneGretzky');
+  nhl.MarioLemieux('sn-all.json', 'WayneGretzky');
   let son = 0;
   let g = nhl.Gordie[0];
   let o = nhl.WayneGretzky[son];
@@ -374,8 +374,8 @@ window.addEventListener('load', function(){
     nhl.init( g, o );
   } else {
     setTimeout( () => {
-      nhl.MarioLemieux('http://comb.atwebpages.com/nhl/nhl-data.json', 'Gordie');
-      nhl.MarioLemieux('http://comb.atwebpages.com/nhl/sn-all.json', 'WayneGretzky');
+      nhl.MarioLemieux('nhl-data.json', 'Gordie');
+      nhl.MarioLemieux('sn-all.json', 'WayneGretzky');
       g = nhl.Gordie[0];
       o = nhl.WayneGretzky[son];
       nhl.init( g, o );
