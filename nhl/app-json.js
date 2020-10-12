@@ -364,7 +364,7 @@ window.addEventListener('load', function(){
     document.querySelectorAll('.pitch-box')[0].classList.remove('start');
   }, 3000);
 
-  nhl.MarioLemieux('http://comb.atwebpages.com/nhl/nhl-data.json', 'Gordie');
+  nhl.MarioLemieux('nhl-data.json', 'Gordie');
   nhl.MarioLemieux('http://comb.atwebpages.com/nhl/sn-all.json', 'WayneGretzky');
   let son = 0;
   let g = nhl.Gordie[0];
