@@ -1,0 +1,676 @@
+@import url(pitch.css);
+
+#cup_season{
+  display: flex;
+  flex-direction: row;
+  padding: 1px 0;
+  margin: 0 auto;
+}
+#cup_season li{
+  cursor: pointer;
+  list-style-type: none;
+  outline: 1px solid rgb(204, 204, 204);
+  padding: 0;
+  margin-right: 1px;
+  z-index:0;
+}
+#cup_season li.activo{
+  outline-color: rgb(76, 175, 80);
+  z-index: 2;
+}
+#chomp_fm{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-height: 600px;
+}
+#chomp_fm > div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100px;
+}
+#left_round2,
+#right_round2{
+  width: 90px;
+}
+#left_round3,
+#right_round3{
+  width: 90px;
+}
+.western{
+  align-items: flex-start;
+}
+.eastern{
+  align-items: flex-end;
+}
+
+/***********************************************/
+#nhl_cos_date
+{
+  text-shadow: 0px 1px 1px #868585;
+  color: rgb(247 247 247);
+  text-align: left;
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  z-index: 0;
+  width: 700px;
+  margin: 0 auto;
+  font-size: 1.6rem;
+}
+#nhl_cos{
+  float:right;
+  font-size: 1.8rem;
+}
+
+.cup_box_fm{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	background-color: rgb(255, 255, 255);
+	background-image: url(Stanley_Cup_Playoffs.gif);
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  padding-top: 4em;
+  position: relative;
+
+  font-size: 12px;
+  font-family: sans-serif, monospace;
+}
+.chomp{
+  /*outline: 1px solid rgba(255, 165, 0, 0.25);*/
+  background-repeat: no-repeat;
+  background-size: 64px auto;
+}
+#left_round1,
+#right_round1{
+  z-index: 6;
+}
+#left_round2,
+#right_round2{
+  z-index: 8;
+}
+#left_round3,
+#right_round3{
+  z-index: 10;
+}
+#left_round3{
+	background-image: url(NHL_Western_Conference.gif);
+	background-position: 2px 25px;
+}
+#right_round3{
+	background-image: url(NHL_Eastern_Conference.gif);
+	background-position: 36px 25px;
+}
+.round-block{
+ position: relative;
+ width: 40px;
+ height: 80px;
+ top: 0;
+ left: auto;
+ border: 1px solid #ccc;
+ box-sizing: border-box;
+}
+.western .round-block{
+  border-left-color: rgba(0, 0, 0, 0);
+}
+.eastern .round-block{
+  border-right-color: rgba(0, 0, 0, 0);
+}
+.chomp .round-block:last-child:before{
+  width: 81px;
+  border-right-width: 0;
+  border-left-width: 0;
+}
+
+.link_top{
+ position: absolute;
+ top: -20px;
+ left: auto;
+}
+.link_bot{
+ position: absolute;
+ bottom: -20px;
+ left: auto;
+}
+#cup_final .link_top{
+ position: absolute;
+ top: auto;
+ right: auto;
+ bottom: -20px;
+ left: -20px;
+}
+#cup_final .link_bot{
+ position: absolute;
+ top: auto;
+ left: auto;
+ bottom: -20px;
+ right: -20px;
+}
+.western .link_top,
+.western .link_bot{
+  left: -20px;
+}
+.eastern .link_top,
+.eastern .link_bot{
+	right: -20px;
+}
+.score{
+  background-color: rgb(252, 252, 252);
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 28px;
+  left: auto;
+  width: 24px;
+  text-align: center;
+  padding: 4px 0px;
+  border-radius: 0;
+  outline: 1px solid rgb(204, 204, 204);
+  letter-spacing: 1px;
+}
+#cup_final .score{
+  padding: 3px 0px;
+  width: 48px;
+  top: -13px;
+  left: 36px;
+  border-radius: 0;
+  font-size: 16px;
+  font-family: sans-serif, monospace;
+  box-shadow: none;
+  outline: 1px solid rgb(204, 204, 204);
+}
+.western .scope_win{
+  left: -42px!important;
+  right: auto;
+}
+.eastern .scope_win{
+  left: auto;
+  right: -42px!important;
+}
+.western .score{
+  left: -12px;
+}
+.eastern .score{
+	right: -12px;
+}
+.link{
+ background-color: #fcfcfc;
+ background-image: url(logos.png);
+ background-position: -68px 26px;
+ background-repeat: no-repeat;
+ background-size: 350px auto;
+ width: 40px;
+ height: 40px;
+ display: block;
+ outline: 1px solid rgb(204, 204, 204);
+}
+.link:hover{
+  outline-color: rgb(33, 150, 243);/*rgb(76, 175, 80);*/
+}
+.score:hover{
+  outline: 1px solid rgb(76, 175, 80);
+}
+.winner{
+  position: absolute;
+  width: 120px;
+  height: 40px;
+  background-color: rgba(255, 232, 191, 0);
+  border: 1px solid rgb(204, 204, 204);
+  border-bottom-width: 0;
+  box-sizing: border-box;
+  top: 161px;
+  left: 40px;
+}
+.winner:before,
+.winner:after{
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.link_win{
+
+}
+
+#cup_final_pitch{
+  top: 118px;
+  width: 200px!important;
+  z-index: 8;
+}
+#cup_final{
+  background-color: rgba(255, 255, 255, 0);
+  outline: 2px solid rgba(204, 204, 204, 0);
+  outline-offset: -4px;
+  position: relative;
+  height: 400px;
+  box-shadow: 0px 0px 5px 1px rgba(204, 204, 204, 0);
+  /*background-image: url(SeekPng_com_stanleycup.png);
+  background-size: 75% auto;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: rgb(255,255,255);*/
+}
+#scores_block{
+	background-color: rgba(255, 255, 255, 0.5);
+  outline: 1px solid rgb(204, 204, 204);
+  outline-offset: -2px;
+  position: absolute;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: 14px;
+  width: 340px;
+  height: 62px;
+  z-index: 12;
+  box-shadow: 0px 0px 5px 1px rgb(204, 204, 204);
+  padding: 6px 8px;
+}
+#scores_block{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  word-wrap: break-word;
+  font-size: 12px;
+  font-family: monospace, sans-serif;
+}
+#d_series{
+  list-style-type: none;
+  padding: 0;
+  margin: 4px auto;
+  text-align: center;
+}
+#d_series li{
+  display: inline-block;
+  text-align: center;
+  padding: 4px 0px;
+  outline: 1px solid rgb(204, 204, 204);
+  margin: 2px;
+  min-width: 36px;
+  position: relative;
+}
+#d_series li:before{
+  font-family: system-ui, sans-serif;
+  content: "";
+  color: rgb(171, 171, 171);
+  display: block;
+  font-size: 10px;
+  position: absolute;
+  bottom: -13px;
+  left: 0;
+  right: 0;
+  top: auto;
+  text-align: center;
+}
+#d_series li:nth-of-type(1):before{
+  content: "gm 1";
+}
+#d_series li:nth-of-type(2):before{
+  content: "gm 2";
+}
+#d_series li:nth-of-type(3):before{
+  content: "gm 3";
+}
+#d_series li:nth-of-type(4):before{
+  content: "gm 4";
+}
+#d_series li:nth-of-type(5):before{
+  content: "gm 5";
+}
+#d_series li:nth-of-type(6):before{
+  content: "gm 6";
+}
+#d_series li:nth-of-type(7):before{
+  content: "gm 7";
+}
+#ab_team_top,
+#ab_team_bot{
+  margin: 4px auto;
+}
+.champony{
+  font-size: 14px;
+  font-weight: 700;
+}
+.final_teams{
+  padding: 0;
+  text-align: center;
+}
+#final_score{
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.link_champion{
+	margin: 12px auto;
+}
+.name_champion{
+	margin: 4px auto 0;
+  text-align: center;
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  vertical-align: middle;
+  text-align: center;
+}
+.bolder{
+  outline: 1px solid rgb(0, 0, 0)!important;
+  font-weight: 700;
+}
+.activisto{
+  border-color: rgb(76, 175, 80);
+}
+.western .activisto{
+  box-shadow: 2px 0px 3px 0px rgba(76, 175, 80, 0.5);
+}
+.eastern .activisto{
+  box-shadow: -2px 0px 3px 0px rgba(76, 175, 80, 0.5);
+}
+.activisto .link,
+.activisto .score{
+  outline-color: rgb(76, 175, 80);
+}
+.activisto .score {
+  color: rgb(255 255 255);
+  background-color: rgb(76, 175, 80);
+}
+.activisto .link_top{
+  box-shadow: 1px -1px 4px 0px rgb(76, 175, 80);
+}
+.activisto .link_bot{
+  box-shadow: 1px 1px 4px 0px rgb(76, 175, 80);
+}
+
+/*design*/
+.round-block:before,
+.round-block:after{
+  background-color: transparent;
+  content: '';
+  display: block;
+  position: absolute;
+  top: auto;
+  left: auto;
+  bottom: auto;
+  right: auto;
+  border: 1px solid rgba(0,0,0,0);
+  box-sizing: border-box;
+}
+.round-block:before{
+  width: 62px;
+  height: 16px;
+}
+.round-block:after{
+  width: 44px;
+  height: 44px;
+}
+.western .round-block:before{
+  border-right-color: rgb(204, 204, 204);
+  left: 38px;
+}
+.eastern .round-block:before{
+  border-left-color: rgb(204, 204, 204);
+  right: 38px;
+}
+.western .round-block:after{
+  right: -84px;
+}
+.eastern .round-block:after{
+  left: -84px;
+}
+
+
+.western .round-block:nth-of-type(odd):before,
+.eastern .round-block:nth-of-type(odd):before{
+  border-top-color: rgb(204, 204, 204);
+  top: 40px;
+}
+.western .round-block:nth-of-type(odd):after,
+.eastern .round-block:nth-of-type(odd):after{
+  top: 53px;
+}
+
+.western .round-block:nth-of-type(even):before,
+.eastern .round-block:nth-of-type(even):before{
+  border-bottom-color: rgb(204, 204, 204);
+  bottom: 40px;
+}
+.western .round-block:nth-of-type(even):after,
+.eastern .round-block:nth-of-type(even):after{
+  bottom: 53px;
+}
+
+.western .round-block:nth-of-type(5):before,
+.eastern .round-block:nth-of-type(5):before,
+.western .round-block:nth-of-type(6):before,
+.eastern .round-block:nth-of-type(6):before{
+  height: 80px;
+}
+.western .round-block:nth-of-type(5):after,
+.eastern .round-block:nth-of-type(5):after{
+  top: 118px;
+}
+.western .round-block:nth-of-type(6):after,
+.eastern .round-block:nth-of-type(6):after{
+  bottom: 118px;
+}
+
+.western .round-block:last-child:after{
+  left: 78px;
+  top: -19px;
+}
+.eastern .round-block:last-child:after{
+  left: -84px;
+  top: -19px;
+}
+#left_round3 .round-block:last-child:after{
+  left: 118px;
+  top: 18px;
+}
+#right_round3 .round-block:last-child:after{
+  left: -124px;
+  top: 18px;
+}
+#left_round2 .round-block:before,
+#right_round2 .round-block:before{
+  height: 100px;
+}
+#left_round2 .round-block:nth-of-type(odd):after,
+#right_round2 .round-block:nth-of-type(odd):after{
+  top: 128px;
+}
+#left_round2 .round-block:nth-of-type(even):after,
+#right_round2 .round-block:nth-of-type(even):after{
+  top: -94px;
+}
+
+.western .activisto:nth-of-type(odd):before{
+  border-top-color: rgb(76, 175, 80)!important;
+  border-right-color: rgb(76, 175, 80)!important;
+}
+.eastern .activisto:nth-of-type(odd):before{
+  border-top-color: rgb(76, 175, 80)!important;
+  border-left-color: rgb(76, 175, 80)!important;
+}
+.western .activisto:nth-of-type(even):before{
+  border-bottom-color: rgb(76, 175, 80)!important;
+  border-right-color: rgb(76, 175, 80)!important;
+}
+.eastern .activisto:nth-of-type(even):before{
+  border-bottom-color: rgb(76, 175, 80)!important;
+  border-left-color: rgb(76, 175, 80)!important;
+}
+
+.western .activisto:nth-of-type(7):before,
+.eastern .activisto:nth-of-type(7):before{
+  border-left-color: rgba(76, 175, 80, 0)!important;
+  border-right-color: rgba(76, 175, 80, 0)!important;
+}
+
+.western .activisto:after,
+.eastern .activisto:after{
+  border-color: rgb(76, 175, 80)!important;
+}
+
+.thebest{
+  border: 1px solid rgba(204, 204, 204, 0);
+  border-bottom: 1px solid rgba(204, 204, 204, 0);
+  position: absolute;
+  margin: 4px;
+  height: 107px;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.thebest:before{
+  content: "";
+  display: block;
+  position: absolute;
+  border: 1px solid rgb(204, 204, 204);
+  border-top-width: 6px;
+  border-bottom-width: 6px;
+  height: 24px;
+  width: 1px;
+  top: 108px;
+  left: 94px;
+  right: auto;
+  bottom: auto;
+  /* box-shadow: 0px 0px 3px 0px rgb(76, 175, 80); */
+}
+.activisto + .thebest{
+  border-color: rgb(76, 175, 80)!important;
+}
+.activisto + .thebest:before{
+  border-color: rgb(76, 175, 80)!important;
+}
+.activisto + .thebest .link_champion{
+  box-shadow: 0px 0px 6px 0px rgb(76, 175, 80);
+  outline: 2px solid rgb(76, 175, 80);
+  outline-offset: 0px;
+}
+
+.greeno{
+  outline-color: rgba(76, 175, 80, 1)!important;
+}
+.bluo{
+  color: rgb(33, 150, 243);
+}
+.redo{
+  color: rgb(244, 67, 54);
+}
+
+[data-jseason]{
+  color: rgb(36, 30, 28);
+  font-family: monospace, sans-serif;
+  font-size: small;
+  font-weight: 900;
+  padding: 8px 8px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+
+
+/*These are current teams at the time*/
+.Anaheim_Ducks{
+	background-position: -4px 5px;
+}
+.Arizona_Coyotes{
+	background-position: -48px 5px;
+}
+.Boston_Bruins{
+	background-position: -90px 5px;
+}
+.Buffalo_Sabres{
+	background-position: -130px 5px;
+}
+.Calgary_Flames{
+	background-position: -172px 5px;
+}
+.Carolina_Hurricanes{
+	background-position: -217px 5px;
+}
+.Chicago_Blackhawks{
+	background-position: -264px 5px;
+}
+.Colorado_Avalanche{
+	background-position: -310px 5px;
+}
+.Columbus_Blue_Jackets{
+	background-position: 3px -43px;
+}
+.Dallas_Stars{
+	background-position: -44px -41px;
+}
+.Detroit_Red_Wings{
+	background-position: -88px -41px;
+}
+.Edmonton_Oilers{
+	background-position: -132px -41px;
+}
+.Florida_Panthers{
+	background-position: -176px -41px;
+}
+.Los_Angeles_Kings{
+	background-position: -220px -41px;
+}
+.Minnesota_Wild{
+  background-position: -266px -41px;
+}
+.Montreal_Canadiens{
+	background-position: -313px -41px;
+}
+.Nashville_Predators{
+	background-position: -1px -89px;
+}
+.New_Jersey_Devils{
+	background-position: -50px -89px;
+}
+.New_York_Islanders{
+	background-position: -96px -89px;
+}
+.New_York_Rangers{
+	background-position: -142px -89px;
+}
+.Ottawa_Senators{
+	background-position: -183px -89px;
+}
+.Philadelphia_Flyers{
+	background-position: -226px -89px;
+}
+.Pittsburgh_Penguins{
+	background-position: -269px -89px;
+}
+.San_Jose_Sharks{
+	background-position: -313px -89px;
+}
+.Seattle_Kraken{
+	background-image: url(seattle_kraken.gif);
+  background-position: 1px 6px;
+  background-size: contain;
+}
+.St_Louis_Blues{
+  background-position: -16px -136px;
+}
+.Tampa_Bay_Lightning{
+	background-position: -60px -136px;
+}
+.Toronto_Maple_Leafs{
+	background-position: -105px -136px;
+}
+.Vancouver_Canucks{
+	background-position: -151px -136px;
+}
+.Vegas_Golden_Knights{
+	background-position: -201px -136px;
+}
+.Washington_Capitals{
+	background-position: -245px -136px;
+}
+.Winnipeg_Jets{
+	background-position: -292px -136px;
+}
+
+/* The teams of the past time */

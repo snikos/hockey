@@ -1,0 +1,317 @@
+.pitch-box{
+ background-color: rgba(252, 252, 252, 0);
+ border: 0px solid rgb(204, 204, 204);
+ margin: 1em auto;
+ height: 400px;
+ width: 200px;
+ border-radius: 50px;
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ margin: auto;
+ z-index: 0;
+ box-shadow: inset 0px 11px 8px 0px rgba(0, 188, 212, 0.5), inset 0px -11px 8px 0px rgba(255, 108, 97, 0.5);
+ opacity: 0.25;
+}
+.pitch{
+ background-color: rgba(252, 252, 252, 0.52);
+ border: 1px solid rgb(204, 204, 204);
+ margin: 0 auto;
+ height: 400px;
+ width: 200px;
+ border-radius: 50px;
+ position: relative;
+ z-index: 0;
+}
+.pitch-box:before,
+.pitch-box:after{
+ /*content:"";*/
+ background-color: rgb(255,255,255);
+ display: block;
+ border: 1px solid rgb(230, 230, 230);
+ height: 152px;
+ width: 204px;
+ position: absolute;
+ top: auto;
+ bottom: auto;
+ left: -2px;
+ right: auto;
+ z-index: -2;
+}
+.pitch-box:before{
+ border-radius: 52px 52px 0 0;
+ border-bottom-color: rgba(0, 0, 0, 0);
+ top: -2px;
+}
+.pitch-box:after{
+ border-radius: 0 0 52px 52px;
+ border-top-color: rgba(0, 0, 0, 0);
+ bottom: -4px;
+}
+.pitch .before,
+.pitch .after{
+ content:"";
+ display: block;
+ background: rgb(255, 108, 97);
+ position: absolute;
+ top: auto;
+ bottom: auto;
+ left: 51px;
+ right: auto;
+ height: 1px;
+ width: 2px;
+ z-index: 10;
+ box-shadow: 97px 0px 0px 0px rgb(255, 108, 97);
+}
+.pitch .before{
+ top: 65px;
+}
+.pitch .after{
+ bottom: 65px;
+}
+ .line{
+  background-color: rgb(255, 108, 97);
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  top: 200px;
+  left: 0;
+  right: 0;
+  box-shadow: 0px -55px 0px 0px rgb(0, 188, 212),
+    0px 55px 0px 0px rgb(0, 188, 212);
+ }
+ .goal-line{
+  background: rgb(255, 108, 97);
+  height: 1px;
+  width: auto;
+  position: absolute;
+  top: auto;
+  bottom: auto;
+  left: 5px;
+  right: 5px;
+ }
+ .goal-line:before{
+  content: "";
+  background: rgba(0, 0, 0, 0);
+  background-color: rgb(200,200,200);
+  display: block;
+  border-radius: 0 0 50% 50%;
+  height: 8px;
+  width: 16px;
+  margin: 0 auto;
+  position: relative;
+  top: -9px;
+  border: 1px solid rgb(204,204,204);
+  border-top-color: rgba(0, 0, 0, 0);
+  border-left-color: rgba(0, 0, 0, 0);
+  box-shadow: inset 0px -6px 0px 0px rgb(255, 255, 255),
+  0px -2px 0px 1px rgb(255, 255, 255);
+  z-index: 2;
+ }
+.goal-line_left:before{
+  transform: rotate(180deg);
+  top: -9px;
+ }
+.goal-line_right:before{
+  transform: rotate(0deg);
+  top: 0px;
+ }
+.goal-line:after{
+content: "";
+background: rgba(0, 0, 0, 0);
+background-color: rgb(255, 255, 255);
+display: block;
+border-radius: 50%;
+height: 22px;
+width: 22px;
+margin: 0 auto;
+position: absolute;
+left: 0;
+right: 0;
+top: 0px;
+border: 1px solid rgb(255, 99, 71);
+border-top-color: rgba(0, 0, 0, 0);
+border-left-color: rgba(0, 0, 0, 0);
+z-index: 0;
+ }
+.goal-line_left:after{
+top: -12px;
+transform: rotate(45deg);
+}
+.goal-line_right:after{
+  top: -11px;
+  transform: rotate(225deg);
+}
+ .goal-line_left{
+  top: 26px;
+ }
+ .goal-line_right{
+  bottom: 26px;
+ }
+ .kr{
+  background-color: rgba(0, 0, 0, 0);
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 170px;
+  box-sizing: border-box;
+  left: 71px;
+  right: auto;
+  border-radius: 50%;
+  border: 1px solid rgb(0, 188, 212);
+  box-shadow: -48px -136px 0px 0px white, -48px -136px 0px 1px rgb(255, 108, 97), 48px -136px 0px 0px white, 48px -136px 0px 1px rgb(255, 108, 97), -48px 135px 0px 0px white, -48px 135px 0px 1px rgb(255, 108, 97), 48px 135px 0px 0px white, 48px 135px 0px 1px rgb(255, 108, 97);
+ }
+.center-dot{
+background-color: rgb(0, 188, 212);
+height: 3px;
+width: 3px;
+position: absolute;
+top: 199px;
+left: 99px;
+right: auto;
+border-radius: 3px;
+box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+}
+
+.tb{
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: auto;
+  left: -11px;
+  height: 78px;
+  width: 10px;
+  border: 1px solid rgb(0, 0, 0);
+  box-sizing: border-box;
+  z-index: 99;
+}
+.tb-left{
+  border-color: rgb(0, 188, 212);
+  top: 109px;
+  background-color: rgb(0, 188, 212, 0.25);
+}
+.tb-right{
+  border: 1px solid rgb(255, 108, 97);
+  top: 214px;
+  background-color: rgb(255, 108, 97, 0.25);
+}
+.tb-team{
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 3px;
+  left: 1px;
+  bottom: auto;
+  height: 2px;
+  width: 2px;
+  border-radius: 3px;
+  border: 2px solid rgb(200, 200, 200);
+  border-left-color: rgb(204, 204, 204)!important;
+  border-right-color: rgb(204, 204, 204)!important;
+}
+.tb-left .tb-team{
+  border: 2px solid rgb(0, 188, 212);
+  top: auto;
+  bottom: 3px;
+  box-shadow: 0px -12px 0px 0px rgb(0, 188, 212), 1px -22px 0px 0px rgb(0, 188, 212), 0px -32px 0px 0px rgb(0, 188, 212), -1px -42px 0px 0px rgb(0, 188, 212), 1px -52px 0px 0px rgb(0, 188, 212), 0px -62px 0px 0px rgb(0, 188, 212);
+}
+.tb-right .tb-team{
+  border: 2px solid rgb(255, 108, 97);
+  top: 3px;
+  box-shadow: 0px 12px 0px 0px rgb(255, 108, 97), -1px 22px 0px 0px rgb(255, 108, 97), 0px 32px 0px 0px rgb(255, 108, 97), 1px 42px 0px 0px rgb(255, 108, 97), -1px 52px 0px 0px rgb(255, 108, 97), 0px 62px 0px 0px rgb(255, 108, 97);
+}
+.tb-team:before,
+.tb-team:after{
+  content: "";
+  display: block;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: auto;
+  left: 15px;
+  bottom: auto;
+  height: 2px;
+  width: 2px;
+  border-radius: 3px;
+  border: 2px solid rgb(200, 200, 200);
+  border-top-color: rgb(255, 255, 255)!important;
+  border-bottom-color: rgb(255, 255, 255)!important;
+  transition: all 1s cubic-bezier(0.65, 0.05, 0.36, 1) 0.5s;
+}
+.tb-left .tb-team:before{
+  top: 5px;
+  border-color: rgb(0, 188, 212);
+  box-shadow: 0px 0px 0px 0px rgb(0, 188, 212), 0px 0px 0px 0px rgb(0, 188, 212), 0px 0px 0px 0px rgb(0, 188, 212), 0px 0px 0px 0px rgb(0, 188, 212);
+}
+.tb-right .tb-team:before{
+  bottom: 5px;
+  border-color: rgb(255, 108, 97);
+  box-shadow: 0px 0px 0px 0px rgb(255, 108, 97), 0px 0px 0px 0px rgb(255, 108, 97), 0px 0px 0px 0px rgb(255, 108, 97), 0px 0px 0px 0px rgb(255, 108, 97);
+}
+.tb-left .tb-team:after{
+  top: -146px;
+  left: 110px;
+  border: 3px solid rgb(0, 188, 212);
+  transform: rotate(15deg);
+}
+.tb-right .tb-team:after{
+  top: 144px;
+  left: 100px;
+  border: 3px solid rgb(255, 108, 97);
+  transform: rotate(-15deg);
+}
+.pitch-box.start{
+  opacity: 1;
+}
+.start .tb-left .tb-team:before{
+  box-shadow: 80px 5px 0px 0px rgb(0, 188, 212), 180px -5px 0px 0px rgb(0, 188, 212), 150px -45px 0px 0px rgb(0, 188, 212), 30px -45px 0px 0px rgb(0, 188, 212);
+}
+.start .tb-right .tb-team:before{
+  box-shadow: 100px -5px 0px 0px rgb(255, 108, 97), 180px 5px 0px 0px rgb(255, 108, 97), 150px 45px 0px 0px rgb(255, 108, 97), 30px 45px 0px 0px rgb(255, 108, 97);
+}
+
+.fortest{
+  background-color: rgba(0, 0, 0, 0);
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 34px;
+  left: 21px;
+  right: auto;
+  border-radius: 50%;
+  border: 1px solid rgb(0, 188, 212);
+  display: none;
+}
+.fortest:before{
+  content:"";
+  background-color: green;
+  height: 1px;
+  width: 60px;
+  position: absolute;
+  top: 30px;
+  left: auto;
+  right: auto;
+  opacity:0;
+}
+.fortest:after{
+  content: "";
+  background-color: rgb(0 128 0);
+  height: 60px;
+  width: 1px;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  right: auto;
+}
+.fortest:before,
+.fortest:after{
+ opacity:0;
+}
+/*1m=100cm
+60m~30m
+400px~200px
+1m = ?px
+1m=6.5px
+4m(400cm) × 6.5px = 26px
+10m(1000cm) × 6.5px = 65px
+8m(800) × 6.5 = 52px
+*/
