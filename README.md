@@ -1,6 +1,3 @@
-# dex
-deusex
-
-1.Create text game
-
-2.Get ready
+NHL Hockey: Cup of Stanley finals
+View: https://snikos.github.io/hockey/
+Tools: js, css, html
