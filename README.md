@@ -1,3 +1,6 @@
+# step
 NHL Hockey: Cup of Stanley Finals
-Victorious View: https://snikos.github.io/hockey/
-Tools: javascripts, css, html
+# step
+Demo: https://snikos.github.io/hockey/
+# step
+Tools: frontend: javascripts, css, html
