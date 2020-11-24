@@ -54,7 +54,6 @@ let nhl = {
     //return null;
   },
   roundWinnerFm(arr, mark){
-    //console.log(arr);
     let newStr=[], ar1=[], ar2=[];
     
     arr[0].forEach( function(el, iy, array){
@@ -82,13 +81,10 @@ let nhl = {
       let key = Object.keys(i);
       if( i[key]['Next'] !== undefined ) return i;
     });
-    return ( za > zb ) ? -1 : 1;
-  },
-  teamSort(a,b){
-    let keya = Object.keys(a), keyb = Object.keys(b);
-    return ( a[keya]['Next'] > b[keyb]['Next'] ) ? -1 : 1;
+    return ( parseFloat(za) > parseFloat(zb) ) ? 1 : -1;
   },
   roundExecFm(go, data, vec){
+    let fixRound1 = [];
     let arrayRound1 = [];
     let arrayRound2 = [];
     let conferenceFinals = [];
@@ -96,26 +92,29 @@ let nhl = {
 
       let round = val['bands'];
       let team_key = Object.keys(round); // ["Winnipeg_Jets", "St_Louis_Blues"]
-      let team_pair = team_key.map( (el, idx) => {
+
+      team_key.forEach( (el, index) => {
         let relObj = {};
         let rel = round[el];
         relObj[el] = rel; // ['team1': {'Round1'}]
 
-        //arrayRound1.push( relObj );
+        fixRound1.push(relObj);
+        if (index%2===1) {
+          arrayRound1.push( fixRound1 );
+          fixRound1=[];
+        }
         if( rel['Next'] !== undefined ) arrayRound2.push( relObj );
         if( rel['ConferenceFinals'] !== undefined ) conferenceFinals.push( relObj );
         if( rel['StanleyCupFinal'] !== undefined ) nhl['StanleyCupFinal'].push( relObj );
 
         return relObj; // Round1: ['team1': {'Round1'}, 'team2': {'Round1','Round2'}]
       });
-      arrayRound1.push(team_pair)
 
       if( arrayRound1.length===4 ){
-        let arrayRound1_z = arrayRound1.sort( nhl.teamSortZero );
-        //console.log(arrayRound1);
-        //console.log(arrayRound1_z);
-        arrayRound1_z.forEach( (a, i) => {
-          //arr_pair.push(a);
+
+        //arrayRound1.sort( nhl.teamSortZero );
+
+        arrayRound1.forEach( (a, i) => {
           if( a.length===2){
             nhl.drawRoundFm( go, a, 'Round1', vec, (vec+'_round1') );
           }
@@ -124,7 +123,7 @@ let nhl = {
 
       if( arrayRound2.length===4 ){
         let arr_pair = [];
-        //let arrayRound2_z = arrayRound2.sort( nhl.teamSort );
+        //arrayRound2.sort( nhl.teamSortZero );
         arrayRound2.forEach( (a, i) => {
           arr_pair.push(a);
           if( arr_pair.length===2){
@@ -143,7 +142,6 @@ let nhl = {
         nhl['StanleyCupFinal']=[];
       }
 
-      //console.log(team_pair);
     });
   },
   drawRoundFm(go, arr, key, conf, container){
@@ -292,7 +290,7 @@ let nhl = {
     return false;
   },
   showLineWin( target ){
-    //search all .round-block a with winner name
+    //search all .round-block with winner name
     let wt = this['winTeam'];
     let count = 1;
     this.showSeriaFm( target );
@@ -300,10 +298,11 @@ let nhl = {
       let link = el.getAttribute('title');
       let mom = el.parentNode;
       if(link === wt) {
-        let timer = count++;//1,2,3,4
+        let timer = 200;
+        count++;//1,2,3,4
         setTimeout( function() {
           mom.classList.add('activisto');
-        }, 200*timer);
+        }, timer*count);
       }
     });
     count=1;
@@ -333,6 +332,7 @@ document.addEventListener('click', function(e){
 
   if( that.id === 'showPathWinner' ){
     nhl.showLineWin( document.querySelectorAll('.scope_win')[0] );
+
   }
 
   if( that.parentNode.dataset['cup'] ){

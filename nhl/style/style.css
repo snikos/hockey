@@ -115,6 +115,7 @@
  left: auto;
  border: 1px solid #ccc;
  box-sizing: border-box;
+ opacity: 0.66;
 }
 .western .round-block{
   border-left-color: rgba(0, 0, 0, 0);
@@ -362,12 +363,15 @@
 }
 .activisto{
   border-color: rgb(76, 175, 80);
+  opacity: 1;
 }
 .western .activisto{
   box-shadow: 2px 0px 3px 0px rgba(76, 175, 80, 0.5);
+  opacity: 1;
 }
 .eastern .activisto{
   box-shadow: -2px 0px 3px 0px rgba(76, 175, 80, 0.5);
+  opacity: 1;
 }
 .activisto .link,
 .activisto .score{
