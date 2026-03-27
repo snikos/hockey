@@ -1,0 +1,12 @@
+{
+  "name": "hockey",
+  "version": "1.0.1",
+  "description": "Use static server for dev",
+  "main": "index.js",
+  "scripts": {
+    "start": "static"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

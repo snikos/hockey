@@ -15,8 +15,8 @@ let nhl = {
   StanleyCupFinal: [],
   init(g, o){
     this.cleanFm();
-    //console.log( (""+o.constructor).split("function ")[1].split("(")[0] );
-    //console.log( o.constructor.name );
+    // console.log( (""+o.constructor).split("function ")[1].split("(")[0] ); // 'Object'
+    //console.log( 'test: ', o.constructor.name ); // 'Object'
     nhl_cos.textContent = (o['season']);
     this.roundExecFm(g, o['data_left'],  'left' );
     this.roundExecFm(g, o['data_right'], 'right');
@@ -27,7 +27,7 @@ let nhl = {
     //this.showSeriaFm( document.querySelectorAll('.scope_win')[0] );
   },
   addHtml(el, numArea, metod, tpl){
-  //numArea=0|1|2|3; metod=html|text|elem
+  //numArea=0|1|2|3; method=html|text|elem
   //let arrArea = ['beforebegin','beforeend','afterbegin','afterend'];
     let mtd = {
       html:'insertAdjacentHTML',
@@ -40,6 +40,12 @@ let nhl = {
     };
     el[mtd[metod]](mtd[numArea], tpl);
     return this;
+  },
+  getTag(s){
+    s = !s.includes('.') ? '#'+s : s;
+    let sel = document.querySelectorAll(s);
+    if (sel.length === 0) return null;
+    return (sel.length === 1) ? sel[0] : sel;
   },
   searchTeam(obj, mk, pitch){
         if( pitch==='mark'){
@@ -178,11 +184,12 @@ let nhl = {
       this.addHtml(rblock, 2, 'html', `<a href="${link1}" class="link link_bot ${team1}" title="${team1}" target="_blank"></a>`);
     }
 
-    this.addHtml(d['getElementById'](container), 2, 'elem', rblock);
+    //this.addHtml(d['getElementById'](container), 2, 'elem', rblock);
+    this.addHtml(this.getTag(container), 2, 'elem', rblock);
   },
   drawChampionFm(go, arr, key, conf, container, fuckyoutoomate){
-    let d=document,
-    rblock=d.createElement('div'),
+    let d = document,
+    rblock = d.createElement('div'),
     ch_block = d.createElement('div');
     ch_block.classList.add('thebest');
 
@@ -220,7 +227,7 @@ let nhl = {
         let name_team = String(Object.keys(arr[win_idx]));
         let obj_team  = arr[win_idx][name_team];
         let team = nhl.searchTeam(go, name_team, "team");
-        //let link = site+(obj_team['link_fm'])+'/'+(name_team)+'/';
+        //let linko = site+(obj_team['link_fm'])+'/'+(name_team)+'/';
         let url = nhl.searchTeam(go, name_team, "url");
         let link = site+(url)+'/'+(team)+'/';
 
@@ -294,7 +301,8 @@ let nhl = {
     let wt = this['winTeam'];
     let count = 1;
     this.showSeriaFm( target );
-    [].forEach.call(document.querySelectorAll('.round-block a'), function(el, idx){
+    //[].forEach.call(document.querySelectorAll('.round-block a'), function(el, idx){
+    [].forEach.call(this.getTag('.round-block a'), function(el, idx){
       let link = el.getAttribute('title');
       let mom = el.parentNode;
       if(link === wt) {
@@ -309,18 +317,10 @@ let nhl = {
     return null;
   },
   cleanFm(){
-    nhl_cos.innerHTML = '';
-    document.getElementById('cup_final').innerHTML = '';
-    left_round1.innerHTML = '';
-    left_round2.innerHTML = '';
-    left_round3.innerHTML = '';
-    right_round3.innerHTML = '';
-    right_round2.innerHTML = '';
-    right_round1.innerHTML = '';
-    ab_team_top.innerHTML = '';
-    final_score.innerHTML = '';
-    ab_team_bot.innerHTML = '';
-    d_series.innerHTML = '';
+    const ids = ['nhl_cos','cup_final','left_round1','left_round2','left_round3','right_round1','right_round2','right_round3','ab_team_top','final_score','ab_team_bot','d_series'];
+    for ( const id of ids ) {
+      this.getTag(id).innerHTML = '';
+    }
   }
 };
 
@@ -341,7 +341,7 @@ document.addEventListener('click', function(e){
     let gor = nhl.Gordie[0];
     let obj = nhl.WayneGretzky[son];
 
-    /* toggle class button-seson */
+    /* toggle class button-season */
     nhl.init( gor, obj );
     nhl.showLineWin( document.querySelectorAll('.scope_win')[0] );
     if( that.parentNode.classList[0] !== 'activo' ){
