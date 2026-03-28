@@ -42,10 +42,30 @@ let nhl = {
     return this;
   },
   getTag(s){
+    // dontuseit
     s = !s.includes('.') ? '#'+s : s;
     let sel = document.querySelectorAll(s);
     if (sel.length === 0) return null;
     return (sel.length === 1) ? sel[0] : sel;
+  },
+  showListSeason(container, active){
+    const sea = nhl.WayneGretzky;
+    for ( let i = 0; i < sea.length; i++) {
+      let season = String(sea[i]['season']);
+      let isStr = season.search(/\b\w\w\w\w-\w\w\w\w\b/);
+      if ( isStr !== 0 ) season = '2018-2019';
+      this.addHtml(
+        document.getElementById(container),
+        2,
+        'html',
+        `<li data-cup="ns${season}" class="${i===active?'activo':''}"><span>${season}</span></li>`);
+    }
+    this.addHtml(
+      document.getElementById(container),
+      2,
+      'html',
+      `<li><button id="showPathWinner">showPathWin</button></li>`
+    );
   },
   searchTeam(obj, mk, pitch){
         if( pitch==='mark'){
@@ -117,9 +137,7 @@ let nhl = {
       });
 
       if( arrayRound1.length===4 ){
-
         //arrayRound1.sort( nhl.teamSortZero );
-
         arrayRound1.forEach( (a, i) => {
           if( a.length===2){
             nhl.drawRoundFm( go, a, 'Round1', vec, (vec+'_round1') );
@@ -184,8 +202,7 @@ let nhl = {
       this.addHtml(rblock, 2, 'html', `<a href="${link1}" class="link link_bot ${team1}" title="${team1}" target="_blank"></a>`);
     }
 
-    //this.addHtml(d['getElementById'](container), 2, 'elem', rblock);
-    this.addHtml(this.getTag(container), 2, 'elem', rblock);
+    this.addHtml(d['getElementById'](container), 2, 'elem', rblock);
   },
   drawChampionFm(go, arr, key, conf, container, fuckyoutoomate){
     let d = document,
@@ -231,8 +248,7 @@ let nhl = {
         let url = nhl.searchTeam(go, name_team, "url");
         let link = site+(url)+'/'+(team)+'/';
 
-        this['winTeam'] = team;//name_team;
-        //console.log(win_idx);
+        this['winTeam'] = team;
         rblock.classList.add('round-block');
         rblock.classList.add('winner');
 
@@ -301,8 +317,7 @@ let nhl = {
     let wt = this['winTeam'];
     let count = 1;
     this.showSeriaFm( target );
-    //[].forEach.call(document.querySelectorAll('.round-block a'), function(el, idx){
-    [].forEach.call(this.getTag('.round-block a'), function(el, idx){
+    [].forEach.call(document.querySelectorAll('.round-block a'), function(el, idx){
       let link = el.getAttribute('title');
       let mom = el.parentNode;
       if(link === wt) {
@@ -319,7 +334,7 @@ let nhl = {
   cleanFm(){
     const ids = ['nhl_cos','cup_final','left_round1','left_round2','left_round3','right_round1','right_round2','right_round3','ab_team_top','final_score','ab_team_bot','d_series'];
     for ( const id of ids ) {
-      this.getTag(id).innerHTML = '';
+      document.getElementById(id).innerHTML = '';
     }
   }
 };
@@ -335,17 +350,22 @@ document.addEventListener('click', function(e){
 
   }
 
-  if( that.parentNode.dataset['cup'] ){
+  if( that.parentNode.dataset['cup'] || that.parentNode.dataset['cupX'] ){
     /* find and draw season */
-    let son = that.dataset['jseason'];
+    let obj = nhl.WayneGretzky.find(({ season }, index) => {
+      return season === that.textContent;
+    });
+
     let gor = nhl.Gordie[0];
-    let obj = nhl.WayneGretzky[son];
 
     /* toggle class button-season */
     nhl.init( gor, obj );
     nhl.showLineWin( document.querySelectorAll('.scope_win')[0] );
     if( that.parentNode.classList[0] !== 'activo' ){
       [].forEach.call(document.querySelectorAll('#cup_season li'), function(el){
+        el.classList.remove('activo');
+      });
+      [].forEach.call(document.querySelectorAll('#cup_seasonX li'), function(el){
         el.classList.remove('activo');
       });
       that.parentNode.classList.add('activo');
@@ -373,6 +393,7 @@ window.addEventListener('load', function(){
 
   if( o !== undefined ){
     nhl.init( g, o );
+    nhl.showListSeason('cup_seasonX', son);
   } else {
     setTimeout( () => {
       nhl.MarioLemieux('nhl/nhl-data.json', 'Gordie');
@@ -380,6 +401,7 @@ window.addEventListener('load', function(){
       g = nhl.Gordie[0];
       o = nhl.WayneGretzky[son];
       nhl.init( g, o );
+      nhl.showListSeason('cup_seasonX', son);
     }, 3000);
   }
 });
