@@ -42,8 +42,9 @@ let nhl = {
     return this;
   },
   getTag(s){
-    // dontuseit
-    s = !s.includes('.') ? '#'+s : s;
+    let isById = s.search(/\b\w/i);
+    s = (isById === 0) ? '#'+s : s;
+    //s = !s.includes('.') ? '#'+s : s;
     let sel = document.querySelectorAll(s);
     if (sel.length === 0) return null;
     return (sel.length === 1) ? sel[0] : sel;
@@ -285,8 +286,10 @@ let nhl = {
 
     [].forEach.call(document.querySelectorAll('.round-block'), function(el){
       if( el.childNodes[0] !== that ) el.classList.remove('activisto');
+      if( el.childNodes[0] !== that ) el.classList.remove('animated');
     });
     that.closest('.round-block').classList.add('activisto');
+    that.closest('.round-block').classList.add('animated');
 
     ab_team_top.className = '';
     ab_team_bot.className = '';
@@ -325,6 +328,8 @@ let nhl = {
         count++;//1,2,3,4
         setTimeout( function() {
           mom.classList.add('activisto');
+          mom.classList.add('animated');
+          mom.classList.add('shake');
         }, timer*count);
       }
     });
@@ -334,7 +339,7 @@ let nhl = {
   cleanFm(){
     const ids = ['nhl_cos','cup_final','left_round1','left_round2','left_round3','right_round1','right_round2','right_round3','ab_team_top','final_score','ab_team_bot','d_series'];
     for ( const id of ids ) {
-      document.getElementById(id).innerHTML = '';
+      nhl.getTag(id).innerHTML = '';
     }
   }
 };
@@ -347,10 +352,9 @@ document.addEventListener('click', function(e){
 
   if( that.id === 'showPathWinner' ){
     nhl.showLineWin( document.querySelectorAll('.scope_win')[0] );
-
   }
 
-  if( that.parentNode.dataset['cup'] || that.parentNode.dataset['cupX'] ){
+  if( that.parentNode.dataset['cup'] ){
     /* find and draw season */
     let obj = nhl.WayneGretzky.find(({ season }, index) => {
       return season === that.textContent;
@@ -362,9 +366,6 @@ document.addEventListener('click', function(e){
     nhl.init( gor, obj );
     nhl.showLineWin( document.querySelectorAll('.scope_win')[0] );
     if( that.parentNode.classList[0] !== 'activo' ){
-      [].forEach.call(document.querySelectorAll('#cup_season li'), function(el){
-        el.classList.remove('activo');
-      });
       [].forEach.call(document.querySelectorAll('#cup_seasonX li'), function(el){
         el.classList.remove('activo');
       });
