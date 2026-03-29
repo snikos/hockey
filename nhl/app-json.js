@@ -13,18 +13,33 @@ let nhl = {
     .then(arr => nhl[data] = arr);
   },
   StanleyCupFinal: [],
+  CurrentSeason: {},
   init(g, o){
     this.cleanFm();
+    this.CurrentSeason = {
+      'left': this.getAllBands( o['data_left'] ),
+      'rigth': this.getAllBands( o['data_right'] ),
+    };
     // console.log( (""+o.constructor).split("function ")[1].split("(")[0] ); // 'Object'
     //console.log( 'test: ', o.constructor.name ); // 'Object'
     nhl_cos.textContent = (o['season']);
     this.roundExecFm(g, o['data_left'],  'left' );
     this.roundExecFm(g, o['data_right'], 'right');
 
+    // ---
+    //let x = this.getAllBands( o['data_right'] );
+
     this.showLineWin( document.querySelectorAll('.scope_win')[0] );
     //nhl.showSeriaFm( document.querySelectorAll('.scope_win')[0] );
     /* or */
     //this.showSeriaFm( document.querySelectorAll('.scope_win')[0] );
+  },
+  getAllBands( arrTeams ){
+    const arrX = arrTeams
+      .map(o => Object.keys(o.bands))
+      .filter( (t) => t );
+    const flatten = arr => [].concat(...arr);
+    return flatten(arrX); // ['FLO','TBL',..]
   },
   addHtml(el, numArea, metod, tpl){
   //numArea=0|1|2|3; method=html|text|elem
@@ -69,15 +84,15 @@ let nhl = {
     );
   },
   searchTeam(obj, mk, pitch){
-        if( pitch==='mark'){
-          return Object.keys(obj[mk]);
-        }
-        if( pitch==='team' ){
-          return obj[mk]['team'];
-        }
-        if( pitch==='url' ){
-          return obj[mk]['url_num'];
-        }
+    if( pitch==='mark'){
+      return Object.keys(obj[mk]);
+    }
+    if( pitch==='team' ){
+      return obj[mk]['team'];
+    }
+    if( pitch==='url' ){
+      return obj[mk]['url_num'];
+    }
     //return null;
   },
   roundWinnerFm(arr, mark){
@@ -162,6 +177,7 @@ let nhl = {
         nhl.drawRoundFm( go, conferenceFinals, 'ConferenceFinals', vec, (vec+'_round3') );
         conferenceFinals=[];
       }
+
       if( nhl['StanleyCupFinal'].length===2 && vec==='right' ){
         nhl.drawChampionFm( go, nhl['StanleyCupFinal'], 'StanleyCupFinal', vec, 'cup_final' );
         nhl['StanleyCupFinal']=[];
@@ -198,7 +214,7 @@ let nhl = {
       //rblock.dataset['id'] = `id_${'---'}`;
       rblock.classList.add('round-block');
 
-      this.addHtml(rblock, 2, 'html', `<span class="score" data-series="${reswin}" data-teams="${team0}:${team1}" data-winer="${rw}">${rw.split(':')[0]}:${rw.split(':')[1]}</span>`);
+      this.addHtml(rblock, 2, 'html', `<span class="score" data-series="${reswin}" data-teams="${team0}:${team1}" data-conf="${conf}" data-winer="${rw}">${rw.split(':')[0]}:${rw.split(':')[1]}</span>`);
       this.addHtml(rblock, 2, 'html', `<a href="${link0}" class="link link_top ${team0}" title="${team0}" target="_blank"></a>`);
       this.addHtml(rblock, 2, 'html', `<a href="${link1}" class="link link_bot ${team1}" title="${team1}" target="_blank"></a>`);
     }
@@ -231,6 +247,7 @@ let nhl = {
       let round_winer = [obj_team0[key], obj_team1[key]];
       let reswin = this.roundWinnerFm(round_winer, 'full');
       let rw = this.roundWinnerFm(round_winer, 'short')[0];
+      let winSide = '';
 
       /* if the champion isn't undefined -> break */
       //console.log( fuckyoutoomate.length );
@@ -242,7 +259,7 @@ let nhl = {
 
       if( ch_block ){
         let win_idx = ( rw.split(':')[0] > rw.split(':')[1] ) ? 0 : 1;
-        let name_team = String(Object.keys(arr[win_idx]));
+        let name_team = String(Object.keys(arr[win_idx])); // 'FLO'
         let obj_team  = arr[win_idx][name_team];
         let team = nhl.searchTeam(go, name_team, "team");
         //let linko = site+(obj_team['link_fm'])+'/'+(name_team)+'/';
@@ -253,13 +270,15 @@ let nhl = {
         rblock.classList.add('round-block');
         rblock.classList.add('winner');
 
+        winSide = (nhl.CurrentSeason['left']).includes(name_team) ? 'left' : 'rigth';
+
         this.addHtml(ch_block, 2, 'html', `<a href="${link}" class="link link_champion ${team}" title="${team}"></a>`);
         this.addHtml(ch_block, 2, 'html', '<h4 class="name_champion">'+(`${team}`)+'</h4>');
       }
 
       /****/
 
-      this.addHtml(rblock, 2, 'html', `<span class="score scope_win" data-series="${reswin}" data-teams="${team0}:${team1}" data-winer="${rw}">${rw.split(':')[0]}:${rw.split(':')[1]}</span>`);
+      this.addHtml(rblock, 2, 'html', `<span class="score scope_win" data-series="${reswin}" data-teams="${team0}:${team1}" data-conf="${winSide}" data-winer="${rw}">${rw.split(':')[0]}:${rw.split(':')[1]}</span>`);
       this.addHtml(rblock, 2, 'html', `<a href="${link0}" class="link link_top ${team0}" title="${team0}" target="_blank"></a>`);
       this.addHtml(rblock, 2, 'html', `<a href="${link1}" class="link link_bot ${team1}" title="${team1}" target="_blank"></a>`);
     }
@@ -284,12 +303,14 @@ let nhl = {
       cup_final.classList.remove('greeno');
     }
 
+    document.querySelectorAll('.thebest')[0].classList.remove('animated');
     [].forEach.call(document.querySelectorAll('.round-block'), function(el){
       if( el.childNodes[0] !== that ) el.classList.remove('activisto');
       if( el.childNodes[0] !== that ) el.classList.remove('animated');
     });
     that.closest('.round-block').classList.add('activisto');
     that.closest('.round-block').classList.add('animated');
+    document.querySelectorAll('.thebest')[0].classList.add('animated');
 
     ab_team_top.className = '';
     ab_team_bot.className = '';
@@ -320,7 +341,17 @@ let nhl = {
     let wt = this['winTeam'];
     let count = 1;
     this.showSeriaFm( target );
-    [].forEach.call(document.querySelectorAll('.round-block a'), function(el, idx){
+
+    let playSide = target.dataset['conf']; // left or right
+    let cloneX = null;
+
+    if ( playSide === 'left' ) {
+      cloneX = [...document.querySelectorAll('.round-block a')].reverse();
+    } else {
+      cloneX = [...document.querySelectorAll('.round-block a')];
+    }
+
+    [].forEach.call(cloneX, function(el, idx){
       let link = el.getAttribute('title');
       let mom = el.parentNode;
       if(link === wt) {
@@ -328,11 +359,12 @@ let nhl = {
         count++;//1,2,3,4
         setTimeout( function() {
           mom.classList.add('activisto');
-          mom.classList.add('animated');
-          mom.classList.add('shake');
+          mom.classList.add('animated','fadeInUp');
+          //rotor,bounceIn
         }, timer*count);
       }
     });
+    document.querySelectorAll('.thebest')[0].classList.add('animated','fadeInDown');
     count=1;
     return null;
   },
