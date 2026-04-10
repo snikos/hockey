@@ -7,6 +7,10 @@
 		"team": "Arizona_Coyotes",
 		"url_num": 5263
 	},
+	"ATL": {
+		"team": "Atlanta_Thrashers",
+		"url_num": 2
+	},
 	"BOS": {
 		"team": "Boston_Bruins",
 		"url_num": 3
@@ -55,6 +59,10 @@
 		"team": "Los_Angeles_Kings",
 		"url_num": 14
 	},
+	"MNS": {
+		"team": "Minnesota_North_Stars",
+		"url_num": 34
+	},
 	"MIN": {
 		"team": "Minnesota_Wild",
 		"url_num": 15
@@ -86,6 +94,10 @@
 	"PHI": {
 		"team": "Philadelphia_Flyers",
 		"url_num": 22
+	},
+	"PHO": {
+		"team": "Phoenix_Coyotes",
+		"url_num": 23
 	},
 	"PIT": {
 		"team": "Pittsburgh_Penguins",
@@ -126,5 +138,13 @@
 	"WIN": {
 		"team": "Winnipeg_Jets",
 		"url_num":3050
+	},
+	"HFD": {
+		"team": "Hartford_Whalers",
+		"url_num": 32
+	},
+	"QUE": {
+		"team": "Quebec_Nordiques",
+		"url_num": 33
 	}
 }]

@@ -5,10 +5,25 @@
   <title>NHL - The cup of Stanley | Alexander Ovechkin</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="nhl/style/style.css" />
+  <link rel="stylesheet" type="text/css" href="nhl/style/drop.css" />
   <link rel="stylesheet" type="text/css" href="nhl/style/animate.css" />
 </head>
 <body>
-	<ul id="cup_seasonX"></ul>
+	<div>
+		<div class="custom-select">
+			<button class="select-button">
+				<span class="selected-value">Open season</span>
+				<span class="arrow"></span>
+			</button>
+			<ul class="select-dropdown hidden">
+				<li></li>
+			</ul>
+		</div>
+	</div>
+	<div>
+		<select id="chooseSeason"></select>
+	</div>
+	<ul id="cup_seasonX" style="display:none;"></ul>
 	<div class="cup_box_fm">
 		<section class="pitch-box">
 		 <span class="tb tb-left">

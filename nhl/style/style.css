@@ -205,6 +205,35 @@
 .eastern .score{
 	right: -12px;
 }
+.letTop,
+.letBot {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 3px 0px #070707;
+  display: block;
+  position: absolute;
+  z-index: 10;
+  width: 16px;
+}
+.letTop{
+  top: -12px;
+  left: 2px;
+}
+.letBot{
+  top: 20px;
+  left: 6px;
+}
+.activisto .letTop {
+  background-color: rgb(76, 175, 80);
+  box-shadow: 1px 1px 4px -1px #080707;
+  top: -4px;
+  left: -8px;
+}
+.activisto .letBot {
+  background-color: rgb(76, 175, 80);
+  box-shadow: 1px 1px 3px 0px #080707;
+  top: 11px;
+  left: 14px;
+}
 .link{
  background-color: #fcfcfc;
  background-image: url(logos.png);
@@ -688,5 +717,43 @@
 .Winnipeg_Jets{
 	background-position: -292px -136px;
 }
+/*new*/
+.Minnesota_North_Stars{
+  background-image: url(minnesota_north_stars.png);
+  background-position: 6px 7px;
+  background-size: 28px auto;
+}
+.Quebec_Nordiques{
+  background-image: url(quebec_nordiques.png);
+  background-position: 6px 7px;
+  background-size: 28px auto;
+}
+.Phoenix_Coyotes{
+  background-image: url(phoenix_coyotes.png);
+  background-position: 6px 7px;
+  background-size: 28px auto;
+}
+.Atlanta_Thrashers{
+  background-image: url(atlanta_thrashers.gif);
+  background-position: 6px 7px;
+  background-size: 28px auto;
+}
+.Anaheim_Ducks{
+  background-image: url(anaheim_ducks.png);
+  background-position: 6px 7px;
+  background-size: 28px auto;
+}
+.Hartford_Whalers{
+  background-image: url(hartford_whalers.png);
+  background-position: 6px 7px;
+  background-size: 28px auto;
+}
 
 /* The teams of the past time */
+
+#chooseSeason {
+  display: inline-block;
+  width: 160px;
+  padding: 12px;
+  text-align: center;
+}

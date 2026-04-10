@@ -23,10 +23,10 @@ let nhl = {
     // console.log( (""+o.constructor).split("function ")[1].split("(")[0] ); // 'Object'
     //console.log( 'test: ', o.constructor.name ); // 'Object'
     nhl_cos.textContent = (o['season']);
-
     this.roundExecFm(g, o['data_left'],  'left' );
     this.roundExecFm(g, o['data_right'], 'right');
 
+    // ---
     //let x = this.getAllBands( o['data_right'] );
 
     this.showLineWin( document.querySelectorAll('.scope_win')[0] );
@@ -83,25 +83,6 @@ let nhl = {
       `<li><button id="showPathWinner">showPathWin</button></li>`
     );
   },
-  showSelectSeason(container, active) {
-    const sea = nhl.WayneGretzky;
-    for ( let i = 0; i < sea.length; i++) {
-      let season = String(sea[i]['season']);
-      let isStr = season.search(/\b\w\w\w\w-\w\w\w\w\b/);
-      if ( isStr !== 0 ) season = '2018-2019';
-      this.addHtml(
-        document.getElementById(container),
-        2,
-        'html',
-        `<option data-cup="ns${season}" class="" value="ns${season}"><span>${season}</span></option>`);
-    }
-    // this.addHtml(
-    //   document.getElementById(container),
-    //   2,
-    //   'html',
-    //   `<li><button id="showPathWinner">showPathWin</button></li>`
-    // );
-  },
   searchTeam(obj, mk, pitch){
     if( pitch==='mark'){
       return Object.keys(obj[mk]);
@@ -149,18 +130,12 @@ let nhl = {
     let arrayRound1 = [];
     let arrayRound2 = [];
     let conferenceFinals = [];
-
-    // good format "bands"
-    //const cloneData = data.slice(0);
-    //console.log(cloneData);
-
     data.forEach( (val, idx, array) => {
 
-      //console.log('Old round: ', idx, ':', val);
       let round = val['bands'];
       let team_key = Object.keys(round); // ["Winnipeg_Jets", "St_Louis_Blues"]
 
-      team_key.forEach( (el, index, arr) => {
+      team_key.forEach( (el, index) => {
         let relObj = {};
         let rel = round[el];
         relObj[el] = rel; // ['team1': {'Round1'}]
@@ -170,9 +145,7 @@ let nhl = {
           arrayRound1.push( fixRound1 );
           fixRound1=[];
         }
-        //console.log('arrayRound1: ', el, arr);
         if( rel['Next'] !== undefined ) arrayRound2.push( relObj );
-        //console.log('arrayRound2: ', arrayRound2);
         if( rel['ConferenceFinals'] !== undefined ) conferenceFinals.push( relObj );
         if( rel['StanleyCupFinal'] !== undefined ) nhl['StanleyCupFinal'].push( relObj );
 
@@ -241,8 +214,7 @@ let nhl = {
       //rblock.dataset['id'] = `id_${'---'}`;
       rblock.classList.add('round-block');
 
-      this.addHtml(rblock, 2, 'html', `<span class="score" data-series="${reswin}" data-teams="${team0}:${team1}" data-conf="${conf}" data-winer="${rw}">
-        <span class="letTop">${rw.split(':')[0]}</span>:<span class="letBot">${rw.split(':')[1]}</span></span>`);
+      this.addHtml(rblock, 2, 'html', `<span class="score" data-series="${reswin}" data-teams="${team0}:${team1}" data-conf="${conf}" data-winer="${rw}">${rw.split(':')[0]}:${rw.split(':')[1]}</span>`);
       this.addHtml(rblock, 2, 'html', `<a href="${link0}" class="link link_top ${team0}" title="${team0}" target="_blank"></a>`);
       this.addHtml(rblock, 2, 'html', `<a href="${link1}" class="link link_bot ${team1}" title="${team1}" target="_blank"></a>`);
     }
@@ -404,26 +376,8 @@ let nhl = {
   }
 };
 
-document.addEventListener('change', function(e){
-  let that = e.target;
-  if ( that.id === 'chooseSeason' ) {
-    let x = Array.from(that).find( el => el.value && el.selected );
-    console.log(x.value);
-
-    /* find and draw season */
-    let obj = nhl.WayneGretzky.find(({ season }, index) => {
-      return 'ns'+season === x.value;
-    });
-    let gor = nhl.Gordie[0];
-
-    nhl.init( gor, obj );
-    nhl.showLineWin( document.querySelectorAll('.scope_win')[0] );
-  }
-}, false);
-
 document.addEventListener('click', function(e){
   let that = e.target;
-
   if( that.classList[0] === 'score' ){
     nhl.showSeriaFm( that );
   }
@@ -472,7 +426,6 @@ window.addEventListener('load', function(){
 
   if( o !== undefined ){
     nhl.init( g, o );
-    nhl.showSelectSeason('chooseSeason', son);
     nhl.showListSeason('cup_seasonX', son);
   } else {
     setTimeout( () => {
@@ -481,7 +434,6 @@ window.addEventListener('load', function(){
       g = nhl.Gordie[0];
       o = nhl.WayneGretzky[son];
       nhl.init( g, o );
-      nhl.showSelectSeason('chooseSeason', son);
       nhl.showListSeason('cup_seasonX', son);
     }, 3000);
   }
