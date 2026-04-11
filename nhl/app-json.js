@@ -3,12 +3,12 @@
 let nhl = {
   Gordie: [],
   WayneGretzky: [],
-  MarioLemieux(getUrl, data){
+  async MarioLemieux(getUrl, data){
     //let proxyUrl  = 'https://cors-anywhere.herokuapp.com/';
     let targetUrl = getUrl;
     let that;
     //fetch(proxyUrl + getUrl)
-    fetch(getUrl)
+    await fetch(getUrl)
     .then(response => response.json())
     .then(arr => nhl[data] = arr);
   },
@@ -64,7 +64,7 @@ let nhl = {
     if (sel.length === 0) return null;
     return (sel.length === 1) ? sel[0] : sel;
   },
-  showListSeason(container, active){
+  showSelectSeasonLi(container, active) {
     const sea = nhl.WayneGretzky;
     for ( let i = 0; i < sea.length; i++) {
       let season = String(sea[i]['season']);
@@ -74,33 +74,8 @@ let nhl = {
         document.getElementById(container),
         2,
         'html',
-        `<li data-cup="ns${season}" class="${i===active?'activo':''}"><span>${season}</span></li>`);
+        `<li data-cup="ns${season}" class="lisel"><span>${season}</span></li>`);
     }
-    this.addHtml(
-      document.getElementById(container),
-      2,
-      'html',
-      `<li><button id="showPathWinner">showPathWin</button></li>`
-    );
-  },
-  showSelectSeason(container, active) {
-    const sea = nhl.WayneGretzky;
-    for ( let i = 0; i < sea.length; i++) {
-      let season = String(sea[i]['season']);
-      let isStr = season.search(/\b\w\w\w\w-\w\w\w\w\b/);
-      if ( isStr !== 0 ) season = '2018-2019';
-      this.addHtml(
-        document.getElementById(container),
-        2,
-        'html',
-        `<option data-cup="ns${season}" class="" value="ns${season}"><span>${season}</span></option>`);
-    }
-    // this.addHtml(
-    //   document.getElementById(container),
-    //   2,
-    //   'html',
-    //   `<li><button id="showPathWinner">showPathWin</button></li>`
-    // );
   },
   searchTeam(obj, mk, pitch){
     if( pitch==='mark'){
@@ -401,28 +376,60 @@ let nhl = {
     for ( const id of ids ) {
       nhl.getTag(id).innerHTML = '';
     }
-  }
+  },
+  handleOptionSelect(option) {
+    // ork  not correct !!!!
+    [].forEach.call(document.querySelectorAll(".select-dropdown li"), (el) => {
+      el.classList.remove("selected")
+    });
+
+    option.parentNode.classList.add("selected");
+    const selectedValue = document.querySelector(".selected-value");
+    selectedValue.textContent = option.textContent.trim();
+    this.toggleDropdown(false);
+  },
+  toggleDropdown( expand = null ) {
+    [].forEach.call(document.querySelectorAll(".custom-select"), (customSelect) => {
+      const selectButton = customSelect.querySelector(".select-button");
+      const dropdown = customSelect.querySelector(".select-dropdown");
+
+      const isOpen = expand !== null ? expand : dropdown.classList.contains("hidden");
+      dropdown.classList.toggle("hidden", !isOpen);
+      selectButton.setAttribute("aria-expanded", isOpen);
+    });
+  },
 };
 
-document.addEventListener('change', function(e){
-  let that = e.target;
-  if ( that.id === 'chooseSeason' ) {
-    let x = Array.from(that).find( el => el.value && el.selected );
-    console.log(x.value);
+// document.addEventListener('change', function(e){
+//   let that = e.target;
+//   if ( that.id === 'chooseSeason' ) {
+//     let x = Array.from(that).find( el => el.value && el.selected );
+//     console.log(x.value);
 
-    /* find and draw season */
-    let obj = nhl.WayneGretzky.find(({ season }, index) => {
-      return 'ns'+season === x.value;
-    });
-    let gor = nhl.Gordie[0];
+//     /* find and draw season */
+//     let obj = nhl.WayneGretzky.find(({ season }, index) => {
+//       return 'ns'+season === x.value;
+//     });
+//     let gor = nhl.Gordie[0];
 
-    nhl.init( gor, obj );
-    nhl.showLineWin( document.querySelectorAll('.scope_win')[0] );
-  }
-}, false);
+//     nhl.init( gor, obj );
+//     nhl.showLineWin( document.querySelectorAll('.scope_win')[0] );
+//   }
+// }, false);
 
 document.addEventListener('click', function(e){
   let that = e.target;
+
+  if ( that.parentNode.classList[0] === 'select-button' ||
+    that.classList[0] === 'select-button' ) {
+    nhl.toggleDropdown(true);
+  } else {
+    nhl.toggleDropdown(false);
+  }
+
+  if ( that.parentNode.classList[0] === 'lisel' ) {
+    nhl.handleOptionSelect(that);
+  }
 
   if( that.classList[0] === 'score' ){
     nhl.showSeriaFm( that );
@@ -443,20 +450,15 @@ document.addEventListener('click', function(e){
     /* toggle class button-season */
     nhl.init( gor, obj );
     nhl.showLineWin( document.querySelectorAll('.scope_win')[0] );
-    if( that.parentNode.classList[0] !== 'activo' ){
-      [].forEach.call(document.querySelectorAll('#cup_seasonX li'), function(el){
-        el.classList.remove('activo');
-      });
-      that.parentNode.classList.add('activo');
-    }
-    else {
-      return;
-    }
   }
   return false;
 }, false);
 
-window.addEventListener('load', function(){
+//window.addEventListener('load', function(){
+document.addEventListener('DOMContentLoaded', () => {
+  let g = null;
+  let o = null;
+  let son = 0;
 
   /* animation background */
   document.querySelectorAll('.pitch-box')[0].classList.add('start');
@@ -464,27 +466,27 @@ window.addEventListener('load', function(){
     document.querySelectorAll('.pitch-box')[0].classList.remove('start');
   }, 3000);
 
-  nhl.MarioLemieux('nhl/nhl-data.json', 'Gordie');
-  nhl.MarioLemieux('nhl/sn-all.json', 'WayneGretzky');
-  let son = 0;
-  let g = nhl.Gordie[0];
-  let o = nhl.WayneGretzky[son];
-
-  if( o !== undefined ){
-    nhl.init( g, o );
-    nhl.showSelectSeason('chooseSeason', son);
-    nhl.showListSeason('cup_seasonX', son);
-  } else {
-    setTimeout( () => {
-      nhl.MarioLemieux('nhl/nhl-data.json', 'Gordie');
-      nhl.MarioLemieux('nhl/sn-all.json', 'WayneGretzky');
-      g = nhl.Gordie[0];
-      o = nhl.WayneGretzky[son];
+  (async () => {
+    try {
+      await nhl.MarioLemieux('nhl/nhl-data.json', 'Gordie');
+      await nhl.MarioLemieux('nhl/sn-all.json', 'WayneGretzky');
+      g = await nhl.Gordie[0];
+      o = await nhl.WayneGretzky[son];
       nhl.init( g, o );
-      nhl.showSelectSeason('chooseSeason', son);
-      nhl.showListSeason('cup_seasonX', son);
-    }, 3000);
-  }
+      nhl.showSelectSeasonLi('chooseSeasonLi', son);
+
+      [].forEach.call(document.querySelectorAll('.select-dropdown li'), (el, idx) => {
+        if (idx === son) {
+          nhl.handleOptionSelect(el.childNodes[0]);
+        }
+      });
+    } catch(e) {
+      console.log('Error load: ', e);
+    } finally {
+      console.log('Game over.');
+    }
+  })();
+
 });
 
 /*Если быстро-быстро есть торт, то фитнес-браслет похвалит за быструю прогулку*/
