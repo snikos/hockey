@@ -139,6 +139,10 @@
 		"team": "Winnipeg_Jets",
 		"url_num":3050
 	},
+	"AFM": {
+		"team": "Atlanta_Flames",
+		"url_num": 31
+	},
 	"HFD": {
 		"team": "Hartford_Whalers",
 		"url_num": 32

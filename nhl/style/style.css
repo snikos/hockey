@@ -691,11 +691,6 @@
 .San_Jose_Sharks{
 	background-position: -313px -89px;
 }
-.Seattle_Kraken{
-	background-image: url(seattle_kraken.gif);
-  background-position: 1px 6px;
-  background-size: contain;
-}
 .St_Louis_Blues{
   background-position: -16px -136px;
 }
@@ -718,42 +713,60 @@
 	background-position: -292px -136px;
 }
 /*new*/
+.Seattle_Kraken{
+  background-image: url(seattle_kraken.gif);
+  background-position: 1px 6px;
+  background-size: contain;
+}
 .Minnesota_North_Stars{
-  background-image: url(minnesota_north_stars.png);
-  background-position: 6px 7px;
-  background-size: 28px auto;
+  background-image: url(minnesota_north_stars.gif);
+  background-position: 0px 7px;
+  background-size: 40px auto;
 }
 .Quebec_Nordiques{
-  background-image: url(quebec_nordiques.png);
-  background-position: 6px 7px;
+  background-image: url(quebec_nordiques.gif);
+  background-position: 7px 10px;
   background-size: 28px auto;
 }
 .Phoenix_Coyotes{
-  background-image: url(phoenix_coyotes.png);
-  background-position: 6px 7px;
-  background-size: 28px auto;
+  background-image: url(phoenix_coyotes.gif);
+  background-position: -2px 5px;
+  background-size: 44px auto;
 }
 .Atlanta_Thrashers{
   background-image: url(atlanta_thrashers.gif);
-  background-position: 6px 7px;
-  background-size: 28px auto;
+  background-position: 3px 7px;
+  background-size: 36px auto;
 }
 .Anaheim_Ducks{
-  background-image: url(anaheim_ducks.png);
-  background-position: 6px 7px;
-  background-size: 28px auto;
+  background-image: url(anaheim_ducks.gif);
+  background-position: 2px 8px;
+  background-size: 38px auto;
 }
 .Hartford_Whalers{
-  background-image: url(hartford_whalers.png);
-  background-position: 6px 7px;
-  background-size: 28px auto;
+  background-image: url(hartford_whalers.gif);
+  background-position: 4px 8px;
+  background-size: 34px auto;
+}
+.Atlanta_Flames{
+  background-image: url(atlanta_flames.gif);
+  background-position: 3px 9px;
+  background-size: 34px auto;
 }
 
 /* The teams of the past time */
 
-#chooseSeason {
+#chooseSeasonLi span:before {
+  background-image: url(icon_sprite.png);
+  background-position: -95px 0px;
+  background-size: 100px auto;
+  content: "";
   display: inline-block;
-  width: 160px;
-  padding: 12px;
-  text-align: center;
+  height: 5px;
+  width: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.52);
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: inset 1px 1px 3px 0px #fff;
+  margin-right: 4px;
 }
