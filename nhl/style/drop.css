@@ -88,3 +88,18 @@
 .select-dropdown.hidden {
   display: none;
 }
+
+#chooseSeasonLi span:before {
+  background-image: url(pics/icon_sprite.png);
+  background-position: -95px 0px;
+  background-size: 100px auto;
+  content: "";
+  display: inline-block;
+  height: 5px;
+  width: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.52);
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: inset 1px 1px 3px 0px #fff;
+  margin-right: 4px;
+}

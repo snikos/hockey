@@ -358,6 +358,7 @@ let nhl = {
       let link = el.getAttribute('title');
       let mom = el.parentNode;
       if(link === wt) {
+        console.log(link, wt);
         let timer = 200;
         count++;//1,2,3,4
         setTimeout( function() {
@@ -397,6 +398,11 @@ let nhl = {
       dropdown.classList.toggle("hidden", !isOpen);
       selectButton.setAttribute("aria-expanded", isOpen);
     });
+  },
+  toggleLoading( expo = null ) {
+    const isOpen = expo !== null ? expo : document.querySelector('#loading').classList.contains('hidden');
+    document.querySelector('#loading').classList.toggle('hidden', !isOpen);
+    document.querySelectorAll('.pitch-box')[0].classList.toggle('show', !isOpen);
   },
 };
 
@@ -459,6 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let g = null;
   let o = null;
   let son = 0;
+  nhl.toggleLoading(true);
 
   /* animation background */
   document.querySelectorAll('.pitch-box')[0].classList.add('start');
@@ -478,12 +485,17 @@ document.addEventListener('DOMContentLoaded', () => {
       [].forEach.call(document.querySelectorAll('.select-dropdown li'), (el, idx) => {
         if (idx === son) {
           nhl.handleOptionSelect(el.childNodes[0]);
+          //nhl.toggleLoading(false);
         }
       });
     } catch(e) {
       console.log('Error load: ', e);
+      nhl.toggleLoading(false);
     } finally {
       console.log('Game over.');
+      setTimeout(() => {
+        nhl.toggleLoading(false);
+      }, 4000);
     }
   })();
 

@@ -13,7 +13,10 @@
  margin: auto;
  z-index: 0;
  box-shadow: inset 0px 11px 8px 0px rgba(0, 188, 212, 0.5), inset 0px -11px 8px 0px rgba(255, 108, 97, 0.5);
- opacity: 0.25;
+ opacity: 1;
+}
+.pitch-box.show{
+  opacity: 0.25;
 }
 .pitch{
  background-color: rgba(252, 252, 252, 0.52);
