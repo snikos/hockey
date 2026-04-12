@@ -2,23 +2,24 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>NHL - The cup of Stanley | Alexander Ovechkin</title>
+  <title>NHL - The cup of Stanley | 1980 - 2025</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="nhl/style/style.css" />
 </head>
 <body>
-	<div>
-		<div class="custom-select">
-			<button class="select-button">
-				<span class="selected-value">Playoff</span>
-				<span class="arrow"></span>
-			</button>
-			<ul id="chooseSeasonLi" class="select-dropdown hidden"></ul>
-		</div>
-		<div class="custom-path"><button id="showPathWinner">showPathWin</button></div>
-	</div>
 	<div class="cup_box_fm">
-		<h1 id="nhl_cos_date">Cup of Stanley <span id="nhl_cos">1893</span></h1>
+		<div id="nhl_cos_date">Cup of Stanley <em id="nhl_cos">1893</em>
+			<div style="float: right">
+				<div class="custom-path"><button id="showPathWinner">showPathWin</button></div>
+				<div class="custom-select">
+					<button class="select-button">
+						<span class="selected-value">Playoff</span>
+						<span class="arrow"></span>
+					</button>
+					<ul id="chooseSeasonLi" class="select-dropdown hidden"></ul>
+				</div>
+			</div>
+		</div>
 		<section id="chomp_fm" class="">
 			<div id="left_round1" class="western"></div>
 			<div id="left_round2" class="western"></div>
@@ -37,7 +38,7 @@
 			<ul id="d_series"></ul>
 		</section>
 	</div>
-	<div id="loading">
+	<div id="loading" class="fx-bg">
 		<section class="pitch-box">
 		 <span class="tb tb-left">
 		 	<span class="tb-team"></span>

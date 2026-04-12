@@ -18,13 +18,13 @@
 #loading.hidden{
   display: none;
 }
-/*#loading > div{
-  position: relative;
-  margin: 0 auto;
-  top: 50%;
-  width: 120px;
-  text-align: center;
-}*/
+.fx-bg {
+  background-color: #fcfcfc;
+  color: black;
+  border-left: 1px dashed #ccc;
+  background: repeating-linear-gradient(to bottom, transparent, transparent 10px, #f4f4f4 10px, #f4f4f4 11px), repeating-linear-gradient(to right, transparent, transparent 10px, #f4f4f4 10px, #f4f4f4 11px);
+  background-clip: padding-box;
+}
 
 /*game*/
 #cup_season,
@@ -87,14 +87,15 @@
   left: 0;
   right: 0;
   bottom: auto;
-  z-index: 0;
+  z-index: 1000;
   width: 700px;
   margin: 0 auto;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 #nhl_cos{
-  float:right;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
+  font-style: normal;
+  margin-left: 0.5rem;
 }
 
 .cup_box_fm{
@@ -134,10 +135,12 @@
 #left_round3{
 	background-image: url(pics/NHL_Western_Conference.gif);
 	background-position: 2px 25px;
+  background-size: 100px auto;
 }
 #right_round3{
 	background-image: url(pics/NHL_Eastern_Conference.gif);
-	background-position: 36px 25px;
+	background-position: 2px 25px;
+  background-size: 100px auto;
 }
 .round-block{
  position: relative;
